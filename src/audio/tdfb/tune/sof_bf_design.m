@@ -38,6 +38,8 @@ switch lower(bf.array)
 		bf = sof_bf_array_lshape(bf);
 	case 'xyz'
 		bf = sof_bf_array_xyz(bf);
+	case 'raw'
+		bf = sof_bf_array_raw(bf);
 	otherwise
 		error('Invalid array type')
 end
@@ -358,7 +360,7 @@ if bf.do_plots
 
 	%% Polar
 	bf.fh(8) = figure(bf.fn + 7);
-	flist = [1000 2000 3000 4000];
+	flist = [100 200 500 1000 2000 3000 4000];
 	idx = [];
 	for i = 1:length(flist)
 		idx(i) = find(f > flist(i), 1, 'first');
@@ -369,7 +371,7 @@ if bf.do_plots
 	else
 		polarplot(phi_rad, bf.resp_polar);
 	end
-	legend('1 kHz','2 kHz','3 kHz','4 kHz');
+	legend('100', '200', '500', '1 kHz','2 kHz','3 kHz','4 kHz');
 	title(['Polar response ' bf.array_id], 'Interpreter','none');
 end
 

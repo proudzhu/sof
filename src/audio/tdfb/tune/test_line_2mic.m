@@ -1,0 +1,11 @@
+bf = sof_bf_defaults();         % Get defaults
+bf.type = 'sdb';
+bf.fir_length = 512;  % 64 tap FIR filters
+bf.array = 'raw';     % Calculate xyz coordinates for rectangular array
+bf.mic_x = [0.01  -0.01];
+bf.mic_y = [0     0];
+bf.mic_z = [0     0];
+bf.steer_r = 5;    % Distance 5.0m
+bf.steer_az = 0;           % Azimuth angle 90 deg
+bf.plot_box = 200e-3;
+bf = sof_bf_design(bf);
